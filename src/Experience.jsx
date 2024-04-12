@@ -18,16 +18,6 @@ export default function Experience() {
       />
       <ambientLight intensity={0.5} />
 
-      <mesh
-        receiveShadow
-        rotation-x={-Math.PI * 0.5}
-        scale={10}
-        position={[3, 0, -3]}
-      >
-        <planeGeometry />
-        <meshStandardMaterial color="yellow" />
-      </mesh>
-
       <primitive
         object={bed.scene}
         scale={0.05}
