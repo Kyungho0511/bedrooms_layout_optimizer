@@ -2,7 +2,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
-  const bed = useGLTF("./bed2.glb");
+  const bed = useGLTF("./models/bed2.glb");
 
   return (
     <>
@@ -18,12 +18,12 @@ export default function Experience() {
       />
       <ambientLight intensity={0.5} />
 
-      <primitive
+      {/* <primitive
         object={bed.scene}
         scale={0.05}
         position={[3, 0, -3]}
         meshStandardMaterial
-      />
+      /> */}
     </>
   );
 }

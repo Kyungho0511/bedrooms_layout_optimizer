@@ -6,14 +6,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daylight Guided Furniture Layouts</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+    <script type="module" src="./index.jsx" defer></script>
   </head>
   <body>
-    <header class="navbar">
-      <a href="#home">Furniture Layout Optimizer</a>
-      <a href="#principles">Learn Layout Principles</a>
-      <a href="#yourspace">Your Own Space</a>
-    </header>
+    <!-- Static Navbar with Single Page Application (SPA) functionality -->
+    <nav class="navbar">
+      <a href="#" onclick="showSection('home')">Furniture Layout Optimizer</a>
+    </nav>
+
+    <!-- App.js: Contents are shown and hidden based on user interaction (SPA)-->
+    <div id="home" class="content active">
+      <div class="home_container">
+        <div class="home_text">
+          <h1>Layout Your Room & Beyond</h1>
+          <p>
+            An Automation Tool: A Bedroom Layout Opimizer. Learn What is the
+            best layout fo your room!
+          </p>
+          <button class="button_yellow" onclick="showSection('daylight')">
+            Get Started
+          </button>
+        </div>
+        <div class="home_image">
+          <img src="./images/home.png" alt="home_image" />
+        </div>
+      </div>
+    </div>
+
+    <div id="daylight" class="content">
+      <div class="container">
+        <h2>Daylights Optimization</h2>
+        <p>
+          Ensuring optimal natural light by strategically placing furniture
+          according to daylight scoring criteria.
+        </p>
+        <div class="images">
+          <img
+            class="arrow"
+            src="./images/arrow_left.JPG"
+            alt="arrow_left"
+            onclick="showSection('home')"
+          />
+          <img
+            class="image_main"
+            src="./images/daylight.png"
+            alt="daylight_image"
+          />
+          <img
+            class="arrow"
+            src="./images/arrow_right.JPG"
+            alt="arrow_right"
+            onclick="showSection('privacy')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div id="privacy" class="content">
+      <div class="container">
+        <h2>Privacy Optimization</h2>
+        <p>
+          To enhance privacy, consider the distance from doors and other
+          furniture for a comfortable and scluded ambience.
+        </p>
+        <div class="images">
+          <img
+            class="arrow"
+            src="./images/arrow_left.JPG"
+            alt="arrow_left"
+            onclick="showSection('daylight')"
+          />
+          <img
+            class="image_main"
+            src="./images/privacy.png"
+            alt="privacy_image"
+          />
+          <img
+            class="arrow"
+            src="./images/arrow_right.JPG"
+            alt="arrow_right"
+            onclick="showSection('circulation')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div id="circulation" class="content">
+      <div class="container">
+        <h2>Circulation Optimization</h2>
+        <p>
+          Calculating and maximizing usable space by evaluating pathways between
+          furniture, ensuring a minimum distance of <b>30 inches</b> for smooth
+          movement and functionality.
+        </p>
+        <div class="images">
+          <img
+            class="arrow"
+            src="./images/arrow_left.JPG"
+            alt="arrow_left"
+            onclick="showSection('privacy')"
+          />
+          <img
+            class="image_main"
+            src="./images/circulation.png"
+            alt="circulation_image"
+          />
+          <img
+            class="arrow"
+            src="./images/arrow_right.JPG"
+            alt="arrow_right"
+            onclick="showSection('creat_room')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- This section renders 3d models -->
     <div id="root"></div>
-    <script type="module" src="./index.jsx"></script>
   </body>
 </html>
