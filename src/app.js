@@ -11,3 +11,17 @@ function showSection(sectionId) {
     activeSection.classList.add("active");
   }
 }
+
+function highlightSelectedMenu(selector) {
+  // Unhighlight all menus
+  const menus = document.querySelectorAll(".optimization_preference");
+  menus.forEach((menu) => {
+    menu.classList.remove("selected");
+  });
+
+  // Highlight selected menu
+  const selectedMenu = document.getElementsByClassName(selector)[0];
+  if (selectedMenu) {
+    selectedMenu.classList.add("selected");
+  }
+}

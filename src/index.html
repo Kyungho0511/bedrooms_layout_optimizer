@@ -9,6 +9,7 @@
     <script src="app.js" defer></script>
     <script type="module" src="./index.jsx" defer></script>
   </head>
+
   <body>
     <!-- Static Navbar with Single Page Application (SPA) functionality -->
     <nav class="navbar">
@@ -16,7 +17,7 @@
     </nav>
 
     <!-- App.js: Contents are shown and hidden based on user interaction (SPA)-->
-    <div id="home" class="content active">
+    <section id="home" class="content active">
       <div class="home_container">
         <div class="home_text">
           <h1>Layout Your Room & Beyond</h1>
@@ -32,9 +33,9 @@
           <img src="./images/home.png" alt="home_image" />
         </div>
       </div>
-    </div>
+    </section>
 
-    <div id="daylight" class="content">
+    <section id="daylight" class="content">
       <div class="container">
         <h2>Daylights Optimization</h2>
         <p>
@@ -61,9 +62,9 @@
           />
         </div>
       </div>
-    </div>
+    </section>
 
-    <div id="privacy" class="content">
+    <section id="privacy" class="content">
       <div class="container">
         <h2>Privacy Optimization</h2>
         <p>
@@ -90,9 +91,9 @@
           />
         </div>
       </div>
-    </div>
+    </section>
 
-    <div id="circulation" class="content">
+    <section id="circulation" class="content">
       <div class="container">
         <h2>Circulation Optimization</h2>
         <p>
@@ -116,13 +117,186 @@
             class="arrow"
             src="./images/arrow_right.JPG"
             alt="arrow_right"
-            onclick="showSection('creat_room')"
+            onclick="showSection('create_room')"
           />
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- This section renders 3d models -->
-    <div id="root"></div>
+    <section id="create_room" class="content">
+      <div class="container">
+        <div class="sidebar">
+          <div>
+            <div class="sidebar_header">
+              <h3>Step 1: Create Your Room</h3>
+              <p>
+                Contextualize what this step is here in subcopy up to two lines
+                maximum.
+              </p>
+            </div>
+
+            <div class="sidebar_body input_container">
+              <p>Width (ft)</p>
+              <div class="slider_container">
+                <p>10</p>
+                <input
+                  type="range"
+                  min="10"
+                  max="14"
+                  value="8"
+                  step="2"
+                  class="slider"
+                  id="myRange"
+                />
+                <p>14</p>
+              </div>
+
+              <p>Depth (ft)</p>
+              <div class="slider_container">
+                <p>10</p>
+                <input
+                  type="range"
+                  min="10"
+                  max="14"
+                  value="8"
+                  step="2"
+                  class="slider"
+                  id="myRange"
+                />
+                <p>14</p>
+              </div>
+
+              <p>Height (ft)</p>
+              <div class="slider_container">
+                <p>8</p>
+                <input
+                  type="range"
+                  min="8"
+                  max="10"
+                  value="8"
+                  step="1"
+                  class="slider"
+                  id="myRange"
+                />
+                <p>10</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="button_yellow" onclick="showSection('add_furniture')">
+            Next
+          </button>
+        </div>
+        <!-- This section renders 3d models -->
+        <div class="canvas"></div>
+      </div>
+    </section>
+
+    <section id="add_furniture" class="content">
+      <div class="container">
+        <div class="sidebar">
+          <div>
+            <div class="sidebar_header">
+              <h3>Step 2: Add Furniture</h3>
+              <p>
+                Contextualize what this step is here in subcopy up to two lines
+                maximum.
+              </p>
+            </div>
+
+            <div class="sidebar_body furniture_container">
+              <div class="furniture_item">
+                <img src="./images/bed.JPG" alt="bed_image" />
+                <p>Bed</p>
+              </div>
+              <div class="furniture_item">
+                <img src="./images/desk.JPG" alt="desk_image" />
+                <p>Desk</p>
+              </div>
+              <div class="furniture_item">
+                <img src="./images/lounge.JPG" alt="lounge_image" />
+                <p>Lounge</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="button_yellow" onclick="showSection('preference')">
+            Next
+          </button>
+        </div>
+        <!-- This section renders 3d models -->
+        <div class="canvas"></div>
+      </div>
+    </section>
+
+    <section id="preference" class="content">
+      <div class="container">
+        <div class="sidebar">
+          <div>
+            <div class="sidebar_header">
+              <h3>Step 3: Choose Preference</h3>
+              <p>
+                Contextualize what this step is here in subcopy up to two lines
+                maximum.
+              </p>
+            </div>
+
+            <div class="sidebar_body">
+              <div
+                class="optimization_preference daylight_preference"
+                onclick="highlightSelectedMenu('daylight_preference')"
+              >
+                Daylights
+              </div>
+              <div
+                class="optimization_preference privacy_preference"
+                onclick="highlightSelectedMenu('privacy_preference')"
+              >
+                Privacy
+              </div>
+              <div
+                class="optimization_preference circulation_preference"
+                onclick="highlightSelectedMenu('circulation_preference')"
+              >
+                Circulation
+              </div>
+            </div>
+          </div>
+
+          <button class="button_yellow" onclick="showSection('result')">
+            Next
+          </button>
+        </div>
+        <!-- This section renders 3d models -->
+        <div class="canvas"></div>
+      </div>
+    </section>
+
+    <section id="result" class="content">
+      <div class="container">
+        <div class="sidebar">
+          <div>
+            <div class="sidebar_header">
+              <h3>Step 4: Pick the Layout</h3>
+            </div>
+
+            <div class="sidebar_body">
+              <h4>Here are the four layouts ranked based on preference.</h4>
+              <h4>Please choose the one that suits you best!</h4>
+              <h4>
+                Click the 'Take Quiz' button to assess which one is more
+                favorable based on your choice!
+              </h4>
+            </div>
+          </div>
+
+          <button class="button_blue" onclick="showSection('quiz-1')">
+            Take Quiz
+          </button>
+        </div>
+        <!-- This section renders 3d models -->
+        <div class="canvas"></div>
+      </div>
+    </section>
   </body>
 </html>
