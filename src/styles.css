@@ -3,17 +3,17 @@
 }
 
 html,
-body,
-#root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+body {
+  font-family: Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: Helvetica, sans-serif;
-  background: white;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  width: 60%;
+  background-color: #f5f5f5;
 }
 
 /* Style universal tags */
@@ -38,15 +38,15 @@ h4 {
   font-weight: 500;
 }
 
-#root {
-  z-index: -1;
-}
-
 /* Style the navbar */
 .navbar {
   display: flex;
+  justify-content: left;
+  column-gap: 3rem;
+  align-items: center;
+  min-height: 50px;
   background-color: #fafafa;
-  height: 3vh;
+  height: 60px;
 }
 
 /* Navbar links */
@@ -65,15 +65,7 @@ h4 {
   }
 }
 
-/* Flexbox styles */
-.navbar {
-  justify-content: left;
-  column-gap: 3rem;
-  align-items: center;
-  min-height: 50px;
-}
-
-/* Contetns */
+/* Contents */
 .content {
   display: none;
 }
@@ -142,17 +134,15 @@ h4 {
   }
 }
 
-#create_room,
-#add_furniture,
-#preference,
-#result {
+/* Your_own_space section with Sidebars */
+#your_own_space {
   & .container {
     display: flex;
     height: 95vh;
   }
 
   & .sidebar {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -247,12 +237,6 @@ h4 {
     & .slider {
       width: 60%;
     }
-  }
-
-  & .canvas {
-    padding: 1rem;
-    width: 60%;
-    background-color: #f5f5f5;
   }
 }
 

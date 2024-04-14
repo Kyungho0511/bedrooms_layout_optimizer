@@ -18,12 +18,12 @@ export default function Experience() {
       />
       <ambientLight intensity={0.5} />
 
-      {/* <primitive
+      <primitive
         object={bed.scene}
         scale={0.05}
-        position={[3, 0, -3]}
+        position={[0, 0, 0]}
         meshStandardMaterial
-      /> */}
+      />
     </>
   );
 }

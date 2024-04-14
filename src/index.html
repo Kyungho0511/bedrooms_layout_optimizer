@@ -30,7 +30,7 @@
           </button>
         </div>
         <div class="home_image">
-          <img src="./images/home.png" alt="home_image" />
+          <img src="./images/cover.gif" alt="home_image" />
         </div>
       </div>
     </section>
@@ -117,15 +117,15 @@
             class="arrow"
             src="./images/arrow_right.JPG"
             alt="arrow_right"
-            onclick="showSection('create_room')"
+            onclick="showSection('your_own_space'); showSidebar('create_room')"
           />
         </div>
       </div>
     </section>
 
-    <section id="create_room" class="content">
+    <section id="your_own_space" class="content">
       <div class="container">
-        <div class="sidebar">
+        <aside id="create_room" class="sidebar">
           <div>
             <div class="sidebar_header">
               <h3>Step 1: Create Your Room</h3>
@@ -183,18 +183,12 @@
             </div>
           </div>
 
-          <button class="button_yellow" onclick="showSection('add_furniture')">
+          <button class="button_yellow" onclick="showSidebar('add_furniture')">
             Next
           </button>
-        </div>
-        <!-- This section renders 3d models -->
-        <div class="canvas"></div>
-      </div>
-    </section>
+        </aside>
 
-    <section id="add_furniture" class="content">
-      <div class="container">
-        <div class="sidebar">
+        <aside id="add_furniture" class="sidebar">
           <div>
             <div class="sidebar_header">
               <h3>Step 2: Add Furniture</h3>
@@ -220,18 +214,12 @@
             </div>
           </div>
 
-          <button class="button_yellow" onclick="showSection('preference')">
+          <button class="button_yellow" onclick="showSidebar('preference')">
             Next
           </button>
-        </div>
-        <!-- This section renders 3d models -->
-        <div class="canvas"></div>
-      </div>
-    </section>
+        </aside>
 
-    <section id="preference" class="content">
-      <div class="container">
-        <div class="sidebar">
+        <aside id="preference" class="sidebar">
           <div>
             <div class="sidebar_header">
               <h3>Step 3: Choose Preference</h3>
@@ -263,18 +251,12 @@
             </div>
           </div>
 
-          <button class="button_yellow" onclick="showSection('result')">
+          <button class="button_yellow" onclick="showSidebar('result')">
             Next
           </button>
-        </div>
-        <!-- This section renders 3d models -->
-        <div class="canvas"></div>
-      </div>
-    </section>
+        </aside>
 
-    <section id="result" class="content">
-      <div class="container">
-        <div class="sidebar">
+        <aside id="result" class="sidebar">
           <div>
             <div class="sidebar_header">
               <h3>Step 4: Pick the Layout</h3>
@@ -293,10 +275,13 @@
           <button class="button_blue" onclick="showSection('quiz-1')">
             Take Quiz
           </button>
-        </div>
+        </aside>
+
         <!-- This section renders 3d models -->
-        <div class="canvas"></div>
+        <div id="root"></div>
       </div>
     </section>
+
+    <section id="quiz" class="content"></section>
   </body>
 </html>
