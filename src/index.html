@@ -13,7 +13,17 @@
   <body>
     <!-- Static Navbar with Single Page Application (SPA) functionality -->
     <nav class="navbar">
-      <a href="#" onclick="showSection('home')">Furniture Layout Optimizer</a>
+      <a href="#" onclick="showSection('home'); resetProgress()"
+        >Furniture Layout Optimizer</a
+      >
+      <div class="progress_container">
+        <ul class="progressbar">
+          <li>Learn</li>
+          <li>Create</li>
+          <li>Quiz</li>
+          <li>Finish</li>
+        </ul>
+      </div>
     </nav>
 
     <!-- App.js: Contents are shown and hidden based on user interaction (SPA)-->
@@ -25,7 +35,10 @@
             An Automation Tool: A Bedroom Layout Opimizer. Learn What is the
             best layout fo your room!
           </p>
-          <button class="button_yellow" onclick="showSection('daylight')">
+          <button
+            class="button_yellow"
+            onclick="showSection('daylight'); checkProgress(1)"
+          >
             Get Started
           </button>
         </div>
@@ -117,7 +130,7 @@
             class="arrow"
             src="./images/arrow_right.JPG"
             alt="arrow_right"
-            onclick="showSection('your_own_space'); showSidebar('create_room')"
+            onclick="showSection('your_own_space'); showSidebar('create_room'); checkProgress(2)"
           />
         </div>
       </div>
@@ -272,7 +285,10 @@
             </div>
           </div>
 
-          <button class="button_blue" onclick="showSection('quiz-1')">
+          <button
+            class="button_blue"
+            onclick="showSection('quiz-1'); checkProgress(3)"
+          >
             Take Quiz
           </button>
         </aside>
@@ -318,13 +334,22 @@
       <h2>Quiz</h2>
       <h3>Which layout has the highest circulation score?</h3>
       <div class="quiz_container">
-        <div class="quiz_item" onclick="showSection('quiz-4')">
+        <div
+          class="quiz_item"
+          onclick="showSection('quiz-4'); checkProgress(4)"
+        >
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
-        <div class="quiz_item" onclick="showSection('quiz-4')">
+        <div
+          class="quiz_item"
+          onclick="showSection('quiz-4'); checkProgress(4)"
+        >
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
-        <div class="quiz_item" onclick="showSection('quiz-4')">
+        <div
+          class="quiz_item"
+          onclick="showSection('quiz-4'); checkProgress(4)"
+        >
           <img src="./images/daylight_best.png" alt="daylight_image" />
         </div>
       </div>

@@ -41,19 +41,21 @@ h4 {
 /* Style the navbar */
 .navbar {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   column-gap: 3rem;
   align-items: center;
   min-height: 50px;
   background-color: #fafafa;
-  height: 60px;
+  height: 80px;
+  position: relative;
+  z-index: 0;
 }
 
 /* Navbar links */
 .navbar a {
   color: black;
   font-weight: 900;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: center;
   padding: 1rem 2rem;
   text-decoration: none;
@@ -61,8 +63,73 @@ h4 {
   transition: all 300ms ease;
 
   &:hover {
-    font-size: 1.05rem;
+    font-size: 1.25rem;
   }
+}
+
+/* Navbar progressbar */
+.progress_container {
+  width: 50%;
+  max-width: 600px;
+  margin: 0;
+}
+
+.progressbar {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progressbar li {
+  color: grey;
+  position: relative;
+  flex-basis: 0;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border: 2px solid #ddd;
+  display: block;
+  text-align: center;
+  margin: 0 auto 6px auto;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #ddd;
+  top: 12px; /* Adjust this to ensure the line is centered vertically with the numbers */
+  left: -50%;
+  z-index: -1;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.checked {
+  color: green;
+}
+
+.progressbar li.checked:before {
+  border-color: green;
+}
+
+.progressbar li.progressed + li:after {
+  background-color: green;
 }
 
 /* Contents */

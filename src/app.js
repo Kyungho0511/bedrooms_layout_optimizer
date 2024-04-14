@@ -37,3 +37,26 @@ function highlightSelectedMenu(menuId) {
     selectedMenu.classList.add("selected");
   }
 }
+
+function checkProgress(stepNumber) {
+  const steps = document.querySelectorAll(".progressbar li");
+  steps.forEach((step, index) => {
+    if (index < stepNumber) {
+      step.classList.add("checked");
+    } else {
+      step.classList.remove("checked");
+    }
+
+    if (index + 1 < stepNumber) {
+      step.classList.add("progressed");
+    }
+  });
+}
+
+function resetProgress() {
+  const steps = document.querySelectorAll(".progressbar li");
+  steps.forEach((step) => {
+    step.classList.remove("checked");
+    step.classList.remove("progressed");
+  });
+}
