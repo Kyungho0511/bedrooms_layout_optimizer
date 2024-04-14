@@ -20,7 +20,7 @@ export default function Experience() {
 
       <primitive
         object={bed.scene}
-        scale={0.05}
+        scale={0.08}
         position={[0, 0, 0]}
         meshStandardMaterial
       />
