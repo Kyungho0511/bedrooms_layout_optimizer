@@ -13,7 +13,7 @@
   <body>
     <!-- Static Navbar with Single Page Application (SPA) functionality -->
     <nav class="navbar">
-      <a href="#" onclick="showSection('home'); resetProgress()"
+      <a href="#" onclick="navigateToSection('home'); resetProgress()"
         >Furniture Layout Optimizer</a
       >
       <div class="progress_container">
@@ -37,7 +37,7 @@
           </p>
           <button
             class="button_yellow"
-            onclick="showSection('daylight'); checkProgress(1)"
+            onclick="navigateToSection('daylight'); checkProgress(1)"
           >
             Get Started
           </button>
@@ -60,7 +60,7 @@
             class="arrow"
             src="./images/arrow_left.JPG"
             alt="arrow_left"
-            onclick="showSection('home')"
+            onclick="navigateToSection('home')"
           />
           <img
             class="image_main"
@@ -71,7 +71,7 @@
             class="arrow"
             src="./images/arrow_right.JPG"
             alt="arrow_right"
-            onclick="showSection('privacy')"
+            onclick="navigateToSection('privacy')"
           />
         </div>
       </div>
@@ -89,7 +89,7 @@
             class="arrow"
             src="./images/arrow_left.JPG"
             alt="arrow_left"
-            onclick="showSection('daylight')"
+            onclick="navigateToSection('daylight')"
           />
           <img
             class="image_main"
@@ -100,7 +100,7 @@
             class="arrow"
             src="./images/arrow_right.JPG"
             alt="arrow_right"
-            onclick="showSection('circulation')"
+            onclick="navigateToSection('circulation')"
           />
         </div>
       </div>
@@ -119,7 +119,7 @@
             class="arrow"
             src="./images/arrow_left.JPG"
             alt="arrow_left"
-            onclick="showSection('privacy')"
+            onclick="navigateToSection('privacy')"
           />
           <img
             class="image_main"
@@ -130,7 +130,7 @@
             class="arrow"
             src="./images/arrow_right.JPG"
             alt="arrow_right"
-            onclick="showSection('your_own_space'); showSidebar('create_room'); checkProgress(2)"
+            onclick="navigateToSection('your_own_space'); showSidebar('create_room'); checkProgress(2)"
           />
         </div>
       </div>
@@ -287,7 +287,7 @@
 
           <button
             class="button_blue"
-            onclick="showSection('quiz-1'); checkProgress(3)"
+            onclick="navigateToSection('quiz-1'); checkProgress(3)"
           >
             Take Quiz
           </button>
@@ -302,13 +302,13 @@
       <h2>Quiz</h2>
       <h3>Which layout prioritizes daylight the most?</h3>
       <div class="quiz_container">
-        <div class="quiz_item" onclick="showSection('quiz-2')">
+        <div class="quiz_item" onclick="navigateToSection('quiz-2')">
           <img src="./images/daylight_best.png" alt="daylight_image" />
         </div>
-        <div class="quiz_item" onclick="showSection('quiz-2')">
+        <div class="quiz_item" onclick="navigateToSection('quiz-2')">
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
-        <div class="quiz_item" onclick="showSection('quiz-2')">
+        <div class="quiz_item" onclick="navigateToSection('quiz-2')">
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
       </div>
@@ -318,13 +318,13 @@
       <h2>Quiz</h2>
       <h3>Which layout offers the highest level of privacy?</h3>
       <div class="quiz_container">
-        <div class="quiz_item" onclick="showSection('quiz-3')">
+        <div class="quiz_item" onclick="navigateToSection('quiz-3')">
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
-        <div class="quiz_item" onclick="showSection('quiz-3')">
+        <div class="quiz_item" onclick="navigateToSection('quiz-3')">
           <img src="./images/daylight_best.png" alt="daylight_image" />
         </div>
-        <div class="quiz_item" onclick="showSection('quiz-3')">
+        <div class="quiz_item" onclick="navigateToSection('quiz-3')">
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
       </div>
@@ -336,26 +336,26 @@
       <div class="quiz_container">
         <div
           class="quiz_item"
-          onclick="showSection('quiz-4'); checkProgress(4)"
+          onclick="navigateToSection('finish'); checkProgress(4)"
         >
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
         <div
           class="quiz_item"
-          onclick="showSection('quiz-4'); checkProgress(4)"
+          onclick="navigateToSection('finish'); checkProgress(4)"
         >
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
         <div
           class="quiz_item"
-          onclick="showSection('quiz-4'); checkProgress(4)"
+          onclick="navigateToSection('finish'); checkProgress(4)"
         >
           <img src="./images/daylight_best.png" alt="daylight_image" />
         </div>
       </div>
     </section>
 
-    <section id="quiz-4" class="content">
+    <section id="finish" class="content">
       <h2>Quiz</h2>
       <h3>Thank you for your participation!</h3>
       <h3>Your Score is 2 out of 3</h3>

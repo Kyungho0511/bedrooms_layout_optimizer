@@ -1,3 +1,30 @@
+// Listen to window popstate for browser history
+window.addEventListener("popstate", function (event) {
+  if (event.state && event.state.section) {
+    console.log(event.state.section);
+    showSection(event.state.section);
+  }
+});
+
+// Handle direct navigation (when a user enters a URL directly into the browser or refreshes the page)
+document.addEventListener("DOMContentLoaded", function () {
+  const sectionId = window.location.hash.replace("#", "");
+  if (sectionId) {
+    showSection(sectionId);
+  }
+});
+
+function navigateToSection(sectionId) {
+  // Modify the URL without reloading the page
+  const url = `#${sectionId}`;
+  const newState = { section: sectionId };
+  history.pushState(newState, "", url);
+  console.log("New state pushed:", newState);
+  console.log("Updated history length:", window.history.length);
+
+  showSection(sectionId);
+}
+
 function showSection(sectionId) {
   // Hide all sections
   const sections = document.querySelectorAll(".content");
