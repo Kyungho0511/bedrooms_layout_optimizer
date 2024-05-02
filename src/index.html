@@ -7,6 +7,7 @@
     <title>Daylight Guided Furniture Layouts</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
+    <script src="input.js" defer></script>
     <script type="module" src="./index.jsx" defer></script>
   </head>
 
@@ -36,8 +37,8 @@
             best layout fo your room!
           </p>
           <button
-            class="button_yellow"
-            onclick="navigateToSection('daylight'); checkProgress(1)"
+            class="button yellow"
+            onclick="navigateToSection('daylight'); checkProgress('learn')"
           >
             Get Started
           </button>
@@ -130,7 +131,7 @@
             class="arrow"
             src="./images/arrow_right.JPG"
             alt="arrow_right"
-            onclick="navigateToSection('your_own_space'); showSidebar('create_room'); checkProgress(2)"
+            onclick="navigateToSection('your_own_space'); showSidebar('create_room'); checkProgress('create')"
           />
         </div>
       </div>
@@ -138,7 +139,7 @@
 
     <section id="your_own_space" class="content">
       <div class="container">
-        <aside id="create_room" class="sidebar">
+        <aside id="create_room" class="sidebar" style="display: flex">
           <div>
             <div class="sidebar_header">
               <h3>Step 1: Create Your Room</h3>
@@ -156,9 +157,9 @@
                   type="range"
                   min="10"
                   max="14"
-                  value="8"
+                  value="10"
                   step="2"
-                  class="slider"
+                  class="width"
                   id="myRange"
                 />
                 <p>14</p>
@@ -171,32 +172,20 @@
                   type="range"
                   min="10"
                   max="14"
-                  value="8"
+                  value="10"
                   step="2"
-                  class="slider"
+                  class="depth"
                   id="myRange"
                 />
                 <p>14</p>
               </div>
-
-              <p>Height (ft)</p>
-              <div class="slider_container">
-                <p>8</p>
-                <input
-                  type="range"
-                  min="8"
-                  max="10"
-                  value="8"
-                  step="1"
-                  class="slider"
-                  id="myRange"
-                />
-                <p>10</p>
-              </div>
             </div>
           </div>
 
-          <button class="button_yellow" onclick="showSidebar('add_furniture')">
+          <button
+            class="button yellow full"
+            onclick="showSidebar('add_furniture')"
+          >
             Next
           </button>
         </aside>
@@ -204,32 +193,66 @@
         <aside id="add_furniture" class="sidebar">
           <div>
             <div class="sidebar_header">
-              <h3>Step 2: Add Furniture</h3>
-              <p>
-                Contextualize what this step is here in subcopy up to two lines
-                maximum.
-              </p>
+              <h3>Step 2: Choose Furniture Option</h3>
+            </div>
+            <div class="radio-list">
+              <label class="custom-radio">
+                <input
+                  type="radio"
+                  name="furniture_option"
+                  value="furniture3"
+                  checked
+                />
+                <span class="radio-indicator"></span>
+                <div class="radio-text">Fully Furnished Bedroom</div>
+              </label>
+              <label class="custom-radio">
+                <input
+                  type="radio"
+                  name="furniture_option"
+                  value="furniture2"
+                />
+                <span class="radio-indicator"></span>
+                <div class="radio-text">Partially Furnished Bedroom</div>
+              </label>
             </div>
 
             <div class="sidebar_body furniture_container">
-              <div class="furniture_item">
-                <img src="./images/bed.JPG" alt="bed_image" />
+              <div class="furniture_item" data-furniture="bed">
+                <img src="./images/bed.png" alt="bed_image" />
                 <p>Bed</p>
               </div>
-              <div class="furniture_item">
-                <img src="./images/desk.JPG" alt="desk_image" />
+              <div class="furniture_item" data-furniture="sofa">
+                <img src="./images/sofa.png" alt="desk_image" />
+                <p>Sofa</p>
+              </div>
+              <div class="furniture_item" data-furniture="tv">
+                <img src="./images/tv.png" alt="lounge_image" />
+                <p>TV</p>
+              </div>
+              <div class="furniture_item" data-furniture="desk">
+                <img src="./images/desk.png" alt="lounge_image" />
                 <p>Desk</p>
               </div>
-              <div class="furniture_item">
-                <img src="./images/lounge.JPG" alt="lounge_image" />
-                <p>Lounge</p>
+              <div class="furniture_item" data-furniture="chair">
+                <img src="./images/chair.png" alt="lounge_image" />
+                <p>Chair</p>
+              </div>
+              <div class="furniture_item" data-furniture="tv_table">
+                <img src="./images/tv-table.png" alt="lounge_image" />
+                <p>TV Table</p>
               </div>
             </div>
           </div>
 
-          <button class="button_yellow" onclick="showSidebar('preference')">
-            Next
-          </button>
+          <div class="button_container">
+            <button class="button yellow" onclick="showSidebar('create_room')">
+              Prev
+            </button>
+            <button class="button yellow" onclick="showSidebar('preference')">
+              Next
+            </button>
+          </div>
         </aside>
 
         <aside id="preference" class="sidebar">
@@ -244,7 +267,7 @@
 
             <div class="sidebar_body">
               <div
-                class="optimization_preference daylight_preference"
+                class="optimization_preference daylight_preference selected"
                 onclick="highlightSelectedMenu('daylight_preference')"
               >
                 Daylights
@@ -264,9 +287,17 @@
             </div>
           </div>
 
-          <button class="button_yellow" onclick="showSidebar('result')">
-            Next
-          </button>
+          <div class="button_container">
+            <button
+              class="button yellow"
+              onclick="showSidebar('add_furniture')"
+            >
+              Prev
+            </button>
+            <button class="button yellow" onclick="showSidebar('result')">
+              Next
+            </button>
+          </div>
         </aside>
 
         <aside id="result" class="sidebar">
@@ -285,12 +316,17 @@
             </div>
           </div>
 
-          <button
-            class="button_blue"
-            onclick="navigateToSection('quiz-1'); checkProgress(3)"
-          >
-            Take Quiz
-          </button>
+          <div class="button_container">
+            <button class="button yellow" onclick="showSidebar('create_room')">
+              Start Over
+            </button>
+            <button
+              class="button blue"
+              onclick="navigateToSection('quiz-1'); checkProgress('quiz')"
+            >
+              Take Quiz
+            </button>
+          </div>
         </aside>
 
         <!-- This section renders 3d models -->
@@ -336,19 +372,19 @@
       <div class="quiz_container">
         <div
           class="quiz_item"
-          onclick="navigateToSection('finish'); checkProgress(4)"
+          onclick="navigateToSection('finish'); checkProgress('finish')"
         >
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
         <div
           class="quiz_item"
-          onclick="navigateToSection('finish'); checkProgress(4)"
+          onclick="navigateToSection('finish'); checkProgress('finish')"
         >
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
         <div
           class="quiz_item"
-          onclick="navigateToSection('finish'); checkProgress(4)"
+          onclick="navigateToSection('finish'); checkProgress('finish')"
         >
           <img src="./images/daylight_best.png" alt="daylight_image" />
         </div>

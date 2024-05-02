@@ -1,8 +1,8 @@
 // Listen to window popstate for browser history
 window.addEventListener("popstate", function (event) {
   if (event.state && event.state.section) {
-    console.log(event.state.section);
     showSection(event.state.section);
+    checkProgress(event.state.section);
   }
 });
 
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const sectionId = window.location.hash.replace("#", "");
   if (sectionId) {
     showSection(sectionId);
+    checkProgress(sectionId);
   }
 });
 
@@ -19,8 +20,6 @@ function navigateToSection(sectionId) {
   const url = `#${sectionId}`;
   const newState = { section: sectionId };
   history.pushState(newState, "", url);
-  console.log("New state pushed:", newState);
-  console.log("Updated history length:", window.history.length);
 
   showSection(sectionId);
 }
@@ -65,18 +64,34 @@ function highlightSelectedMenu(menuId) {
   }
 }
 
-function checkProgress(stepNumber) {
-  const steps = document.querySelectorAll(".progressbar li");
-  steps.forEach((step, index) => {
-    if (index < stepNumber) {
-      step.classList.add("checked");
-    } else {
-      step.classList.remove("checked");
-    }
+// Control progressbars
+const progressSteps = ["learn", "create", "quiz", "finish"];
 
-    if (index + 1 < stepNumber) {
-      step.classList.add("progressed");
-    }
+function checkProgress(sectionId) {
+  const sectionsLearn = ["daylight", "privacy", "circulation"];
+  const sectionsCreate = ["your_own_space"];
+  const sectionsQuiz = ["quiz-1", "quiz-2", "quiz-3"];
+  if (sectionsLearn.includes(sectionId)) sectionId = "learn";
+  if (sectionsCreate.includes(sectionId)) sectionId = "create";
+  if (sectionsQuiz.includes(sectionId)) sectionId = "quiz";
+
+  const stepNumber = progressSteps.indexOf(sectionId) + 1;
+  const progressbar = document.querySelectorAll(".progressbar");
+  progressbar.forEach((bar) => {
+    const steps = bar.querySelectorAll("li");
+    steps.forEach((step, index) => {
+      if (index < stepNumber) {
+        step.classList.add("checked");
+      } else {
+        step.classList.remove("checked");
+      }
+
+      if (index + 1 < stepNumber) {
+        step.classList.add("progressed");
+      } else {
+        step.classList.remove("progressed");
+      }
+    });
   });
 }
 
@@ -86,4 +101,5 @@ function resetProgress() {
     step.classList.remove("checked");
     step.classList.remove("progressed");
   });
+  progressCurr = 0;
 }
