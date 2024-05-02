@@ -5,6 +5,7 @@ let userRoomSize = {
 };
 let userFurnitureOption = "furniture3";
 let userOptimizationPreference = "daylight";
+let userScore = 0;
 
 // Step1: Create Your Room
 document.querySelectorAll('input[type="range"]').forEach((range) => {
@@ -57,3 +58,41 @@ document.querySelectorAll(".optimization_preference").forEach((preference) => {
     console.log(userOptimizationPreference);
   });
 });
+
+// Step4: Pick the Layout
+
+// Quiz
+const answers = {
+  "quiz-1": "daylight",
+  "quiz-2": "privacy",
+  "quiz-3": "circulation",
+};
+const quizCounts = 3;
+
+for (let i = 0; i < quizCounts; i++) {
+  document
+    .querySelector(`#quiz-${i + 1}`)
+    .querySelectorAll(".quiz_item")
+    .forEach((item) => {
+      item.addEventListener("click", () => {
+        if (item.dataset.quiz === answers[`quiz-${i + 1}`]) userScore += 1;
+
+        // update score for the finish section when user answers the last quiz
+        if (i === 2) {
+          document.querySelector(".score").innerHTML = userScore;
+        }
+      });
+    });
+}
+
+// Your Score is 2 out of 3
+
+function resetInputs() {
+  userRoomSize = {
+    w: 10,
+    d: 10,
+  };
+  userFurnitureOption = "furniture3";
+  userOptimizationPreference = "daylight";
+  userScore = 0;
+}

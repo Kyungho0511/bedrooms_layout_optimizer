@@ -14,7 +14,9 @@
   <body>
     <!-- Static Navbar with Single Page Application (SPA) functionality -->
     <nav class="navbar">
-      <a href="#" onclick="navigateToSection('home'); resetProgress()"
+      <a
+        href="#"
+        onclick="navigateToSection('home'); resetProgress(); resetInputs()"
         >Furniture Layout Optimizer</a
       >
       <div class="progress_container">
@@ -338,13 +340,25 @@
       <h2>Quiz</h2>
       <h3>Which layout prioritizes daylight the most?</h3>
       <div class="quiz_container">
-        <div class="quiz_item" onclick="navigateToSection('quiz-2')">
+        <div
+          class="quiz_item"
+          data-quiz="daylight"
+          onclick="navigateToSection('quiz-2')"
+        >
           <img src="./images/daylight_best.png" alt="daylight_image" />
         </div>
-        <div class="quiz_item" onclick="navigateToSection('quiz-2')">
+        <div
+          class="quiz_item"
+          data-quiz="privacy"
+          onclick="navigateToSection('quiz-2')"
+        >
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
-        <div class="quiz_item" onclick="navigateToSection('quiz-2')">
+        <div
+          class="quiz_item"
+          data-quiz="circulation"
+          onclick="navigateToSection('quiz-2')"
+        >
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
       </div>
@@ -354,13 +368,25 @@
       <h2>Quiz</h2>
       <h3>Which layout offers the highest level of privacy?</h3>
       <div class="quiz_container">
-        <div class="quiz_item" onclick="navigateToSection('quiz-3')">
+        <div
+          class="quiz_item"
+          data-quiz="privacy"
+          onclick="navigateToSection('quiz-3')"
+        >
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
-        <div class="quiz_item" onclick="navigateToSection('quiz-3')">
+        <div
+          class="quiz_item"
+          data-quiz="daylight"
+          onclick="navigateToSection('quiz-3')"
+        >
           <img src="./images/daylight_best.png" alt="daylight_image" />
         </div>
-        <div class="quiz_item" onclick="navigateToSection('quiz-3')">
+        <div
+          class="quiz_item"
+          data-quiz="circulation"
+          onclick="navigateToSection('quiz-3')"
+        >
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
       </div>
@@ -372,18 +398,21 @@
       <div class="quiz_container">
         <div
           class="quiz_item"
+          data-quiz="circulation"
           onclick="navigateToSection('finish'); checkProgress('finish')"
         >
           <img src="./images/circulation_best.png" alt="circulation_image" />
         </div>
         <div
           class="quiz_item"
+          data-quiz="privacy"
           onclick="navigateToSection('finish'); checkProgress('finish')"
         >
           <img src="./images/privacy_best.png" alt="privacy_image" />
         </div>
         <div
           class="quiz_item"
+          data-quiz="daylight"
           onclick="navigateToSection('finish'); checkProgress('finish')"
         >
           <img src="./images/daylight_best.png" alt="daylight_image" />
@@ -394,7 +423,7 @@
     <section id="finish" class="content">
       <h2>Quiz</h2>
       <h3>Thank you for your participation!</h3>
-      <h3>Your Score is 2 out of 3</h3>
+      <h3>Your Score is <span class="score"></span> out of 3</h3>
     </section>
   </body>
 </html>
