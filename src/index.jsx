@@ -9,7 +9,7 @@ root.render(
     shadows
     camera={{
       zoom: 70,
-      near: 0.1,
+      near: 0,
       far: 100,
       position: [5, 5, 5],
     }}

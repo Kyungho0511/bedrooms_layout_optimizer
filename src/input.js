@@ -1,34 +1,59 @@
-// User inputs are stored in the following variables
-let userRoomSize = {
-  w: 10,
-  d: 10,
-};
-let userFurnitureOption = "furniture3";
-let userOptimizationPreference = "daylight";
-let userScore = 0;
+import eventManager from "./EventManager";
 
-// Step1: Create Your Room
+/**
+ * User inputs are stored in the userData. Everytime uerserData is updated by setUserData
+ * setUserInput method in 'Experience' React component is called by useState, automatically
+ * leading to rerendering of the component.
+ */
+let userData = {
+  roomSize: { l: 12, w: 16 },
+  furnitureOption: "furniture3",
+  optimizationPreference: "daylight",
+  optimizationRank: 1,
+  score: 0,
+};
+
+export const getUserData = () => userData;
+
+export const setUserData = (newData) => {
+  userData = newData;
+  eventManager.publish("userDataChanged", userData);
+};
+
+// Update userData in (Step1: Create Your Room) section
 document.querySelectorAll('input[type="range"]').forEach((range) => {
   range.addEventListener("change", () => {
     if (range.classList.contains("width")) {
-      userRoomSize.w = parseInt(range.value);
+      const newData = {
+        ...userData,
+        roomSize: { ...userData.roomSize, l: parseInt(range.value) },
+      };
+      setUserData(newData);
     } else if (range.classList.contains("depth")) {
-      userRoomSize.d = parseInt(range.value);
+      const newData = {
+        ...userData,
+        roomSize: { ...userData.roomSize, w: parseInt(range.value) },
+      };
+      setUserData(newData);
     }
-    console.log(userRoomSize);
-    // load room models to 3D scene
   });
 });
 
-// Step2: Choose Furniture Option
+// Update userData in (Step2: Choose Furniture Option) section
 const furniture2 = ["bed", "desk", "chair"];
-
-document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+document.querySelectorAll('input[name="furniture_option"]').forEach((radio) => {
   radio.addEventListener("change", () => {
-    if (radio.checked) userFurnitureOption = radio.value;
+    if (radio.checked) {
+      const newData = {
+        ...userData,
+        furnitureOption: radio.value,
+      };
+      setUserData(newData);
+    }
+
     // load furniture images
-    items = document.querySelectorAll(".furniture_item");
-    if (userFurnitureOption === "furniture3") {
+    const items = document.querySelectorAll(".furniture_item");
+    if (userData.furnitureOption === "furniture3") {
       items.forEach((item) => item.classList.remove("hidden"));
     } else {
       items.forEach((item) => {
@@ -37,31 +62,50 @@ document.querySelectorAll('input[type="radio"]').forEach((radio) => {
         }
       });
     }
-
-    // load furniture models to 3D scene
   });
 });
 
-// Step3: Choose Preference
+// Update userData in (Step3: Choose Preference) section
 document.querySelectorAll(".optimization_preference").forEach((preference) => {
   preference.addEventListener("click", () => {
     if (preference.classList.contains("daylight_preference")) {
-      // load furniture models to 3D scene
-      userOptimizationPreference = "daylight";
+      const newData = {
+        ...userData,
+        optimizationPreference: "daylight",
+      };
+      setUserData(newData);
     } else if (preference.classList.contains("privacy_preference")) {
-      // load furniture models to 3D scene
-      userOptimizationPreference = "privacy";
+      const newData = {
+        ...userData,
+        optimizationPreference: "privacy",
+      };
+      setUserData(newData);
     } else if (preference.classList.contains("circulation_preference")) {
-      // load furniture models to 3D scene
-      userOptimizationPreference = "circulation";
+      const newData = {
+        ...userData,
+        optimizationPreference: "circulation",
+      };
+      setUserData(newData);
     }
-    console.log(userOptimizationPreference);
   });
 });
 
-// Step4: Pick the Layout
+// Update userData in (Step4: Pick the Layout) section
+document
+  .querySelectorAll('input[name="optimization_rank"]')
+  .forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.checked) {
+        const newData = {
+          ...userData,
+          optimizationRank: radio.value,
+        };
+        setUserData(newData);
+      }
+    });
+  });
 
-// Quiz
+// Update userData in (Quiz) section
 const answers = {
   "quiz-1": "daylight",
   "quiz-2": "privacy",
@@ -75,24 +119,39 @@ for (let i = 0; i < quizCounts; i++) {
     .querySelectorAll(".quiz_item")
     .forEach((item) => {
       item.addEventListener("click", () => {
-        if (item.dataset.quiz === answers[`quiz-${i + 1}`]) userScore += 1;
+        if (item.dataset.quiz === answers[`quiz-${i + 1}`]) userData.score += 1;
 
         // update score for the finish section when user answers the last quiz
         if (i === 2) {
-          document.querySelector(".score").innerHTML = userScore;
+          document.querySelector(".score").innerHTML = userData.score;
         }
       });
     });
 }
 
-// Your Score is 2 out of 3
+// Logo & StartOver button reset inputs on click
+document.querySelector(".logo").addEventListener("click", () => {
+  resetInputs();
+});
+document.querySelector(".start_over").addEventListener("click", () => {
+  resetInputs();
+});
+
+// next button in create_room section populate default furniture for 3d scene
+document
+  .querySelector("#create_room")
+  .querySelector("button")
+  .addEventListener("click", () => {
+    setUserData({ ...userData });
+  });
 
 function resetInputs() {
-  userRoomSize = {
-    w: 10,
-    d: 10,
+  userData = {
+    roomSize: { l: 12, w: 16 },
+    furnitureOption: "furniture3",
+    optimizationPreference: "daylight",
+    optimizationRank: 1,
+    score: 0,
   };
-  userFurnitureOption = "furniture3";
-  userOptimizationPreference = "daylight";
-  userScore = 0;
+  setUserData(userData);
 }

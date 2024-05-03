@@ -7,8 +7,8 @@
     <title>Daylight Guided Furniture Layouts</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
-    <script src="input.js" defer></script>
-    <script type="module" src="./index.jsx" defer></script>
+    <script type="module" src="input.js" defer></script>
+    <script type="module" src="index.jsx" defer></script>
   </head>
 
   <body>
@@ -16,7 +16,8 @@
     <nav class="navbar">
       <a
         href="#"
-        onclick="navigateToSection('home'); resetProgress(); resetInputs()"
+        class="logo"
+        onclick="navigateToSection('home'); resetProgress()"
         >Furniture Layout Optimizer</a
       >
       <div class="progress_container">
@@ -152,34 +153,34 @@
             </div>
 
             <div class="sidebar_body input_container">
-              <p>Width (ft)</p>
+              <p>Length (ft)</p>
               <div class="slider_container">
-                <p>10</p>
+                <p>12</p>
                 <input
                   type="range"
-                  min="10"
-                  max="14"
-                  value="10"
+                  min="12"
+                  max="16"
+                  value="12"
                   step="2"
                   class="width"
                   id="myRange"
                 />
-                <p>14</p>
+                <p>16</p>
               </div>
 
-              <p>Depth (ft)</p>
+              <p>Width (ft)</p>
               <div class="slider_container">
-                <p>10</p>
+                <p>16</p>
                 <input
                   type="range"
-                  min="10"
-                  max="14"
-                  value="10"
+                  min="16"
+                  max="20"
+                  value="16"
                   step="2"
                   class="depth"
                   id="myRange"
                 />
-                <p>14</p>
+                <p>20</p>
               </div>
             </div>
           </div>
@@ -308,8 +309,33 @@
               <h3>Step 4: Pick the Layout</h3>
             </div>
 
+            <div class="radio-list horizontal">
+              <label class="custom-radio">
+                <input
+                  type="radio"
+                  name="optimization_rank"
+                  value="1"
+                  checked
+                />
+                <span class="radio-indicator"></span>
+                <div class="rank-text">1</div>
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="optimization_rank" value="2" />
+                <span class="radio-indicator"></span>
+                <div class="rank-text">2</div>
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="optimization_rank" value="3" />
+                <span class="radio-indicator">`</span>
+                <div class="rank-text">3</div>
+              </label>
+            </div>
+
             <div class="sidebar_body">
-              <h4>Here are the four layouts ranked based on preference.</h4>
+              <h4 style="margin-top: 0">
+                Here are the three layouts ranked based on preference.
+              </h4>
               <h4>Please choose the one that suits you best!</h4>
               <h4>
                 Click the 'Take Quiz' button to assess which one is more
@@ -319,7 +345,10 @@
           </div>
 
           <div class="button_container">
-            <button class="button yellow" onclick="showSidebar('create_room')">
+            <button
+              class="button yellow start_over"
+              onclick="showSidebar('create_room')"
+            >
               Start Over
             </button>
             <button
