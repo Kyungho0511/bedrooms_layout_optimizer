@@ -5,6 +5,8 @@ import { getUserData } from "./input";
 
 export default function Experience() {
   const [userData, setUserInput] = useState(() => getUserData());
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const handleDataChange = (newData) => {
       setUserInput(newData);
@@ -30,6 +32,7 @@ export default function Experience() {
     fileName = `models/L${userData.roomSize.l}_W${userData.roomSize.w}_${userData.furnitureOption}_${userData.optimizationPreference}${userData.optimizationRank}.glb`;
   }
 
+  console.log(fileName);
   const room = useGLTF(fileName);
 
   return (

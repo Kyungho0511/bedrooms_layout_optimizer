@@ -16,6 +16,7 @@ let userData = {
 export const getUserData = () => userData;
 
 export const setUserData = (newData) => {
+  console.log("update user data!");
   userData = newData;
   eventManager.publish("userDataChanged", userData);
 };
@@ -145,14 +146,6 @@ for (let i = 0; i < quizCounts; i++) {
     });
 }
 
-// Logo & StartOver button reset inputs on click
-document.querySelector(".logo").addEventListener("click", () => {
-  resetInputs();
-});
-document.querySelector(".start_over").addEventListener("click", () => {
-  resetInputs();
-});
-
 // next button in create_room section populate default furniture for 3d scene
 document
   .querySelector("#create_room")
@@ -161,13 +154,12 @@ document
     setUserData({ ...userData });
   });
 
-function resetInputs() {
-  userData = {
+export function resetInputs() {
+  setUserData({
     roomSize: { l: 12, w: 16 },
     furnitureOption: "furniture3",
     optimizationPreference: "daylight",
     optimizationRank: 1,
     score: 0,
-  };
-  setUserData(userData);
+  });
 }

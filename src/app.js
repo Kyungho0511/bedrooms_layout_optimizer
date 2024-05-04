@@ -1,3 +1,5 @@
+import { resetInputs } from "./input";
+
 // Listen to window popstate for browser history
 window.addEventListener("popstate", function (event) {
   if (event.state && event.state.section) {
@@ -15,7 +17,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function navigateToSection(sectionId) {
+// Logo & StartOver button reset inputs on click
+document.querySelector(".logo").addEventListener("click", () => {
+  showSidebar("create_room");
+  resetInputs();
+});
+document.querySelector(".start_over").addEventListener("click", () => {
+  showSidebar("create_room");
+  resetInputs();
+});
+
+export function navigateToSection(sectionId) {
   // Modify the URL without reloading the page
   const url = `#${sectionId}`;
   const newState = { section: sectionId };
@@ -38,7 +50,7 @@ function showSection(sectionId) {
   }
 }
 
-function showSidebar(sidebarId) {
+export function showSidebar(sidebarId) {
   // Hide all sidebars
   const sidebars = document.querySelectorAll(".sidebar");
   sidebars.forEach((sidebar) => {
@@ -50,7 +62,7 @@ function showSidebar(sidebarId) {
   activeSidebar.style.display = "flex";
 }
 
-function highlightSelectedMenu(menuId) {
+export function highlightSelectedMenu(menuId) {
   // Unhighlight all menus
   const menus = document.querySelectorAll(".optimization_preference");
   menus.forEach((menu) => {
@@ -67,7 +79,7 @@ function highlightSelectedMenu(menuId) {
 // Control progressbars
 const progressSteps = ["learn", "create", "quiz", "finish"];
 
-function checkProgress(sectionId) {
+export function checkProgress(sectionId) {
   const sectionsLearn = ["daylight", "privacy", "circulation"];
   const sectionsCreate = ["your_own_space"];
   const sectionsQuiz = ["quiz-1", "quiz-2", "quiz-3"];
@@ -95,11 +107,17 @@ function checkProgress(sectionId) {
   });
 }
 
-function resetProgress() {
+export function resetProgress() {
   const steps = document.querySelectorAll(".progressbar li");
   steps.forEach((step) => {
     step.classList.remove("checked");
     step.classList.remove("progressed");
   });
-  progressCurr = 0;
 }
+
+// Make exported functions globally accessible
+window.navigateToSection = navigateToSection;
+window.showSidebar = showSidebar;
+window.highlightSelectedMenu = highlightSelectedMenu;
+window.checkProgress = checkProgress;
+window.resetProgress = resetProgress;

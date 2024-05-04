@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daylight Guided Furniture Layouts</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+    <script type="module" src="app.js" defer></script>
     <script type="module" src="input.js" defer></script>
     <script type="module" src="index.jsx" defer></script>
   </head>
@@ -316,7 +316,7 @@
                   checked
                 />
                 <span class="radio-indicator"></span>
-                <div class="rank-text">1</div>
+                <div class="rank-text selected">1</div>
               </label>
               <label class="custom-radio">
                 <input type="radio" name="optimization_rank" value="2" />
@@ -343,12 +343,7 @@
           </div>
 
           <div class="button_container">
-            <button
-              class="button yellow start_over"
-              onclick="showSidebar('create_room')"
-            >
-              Start Over
-            </button>
+            <button class="button yellow start_over">Start Over</button>
             <button
               class="button blue"
               onclick="navigateToSection('quiz-1'); checkProgress('quiz')"
