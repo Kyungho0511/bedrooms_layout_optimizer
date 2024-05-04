@@ -5,8 +5,9 @@ const isCodeSandbox =
 
 export default {
   plugins: [react()],
-  root: "./src",
-  base: "/",
+  root: "src/",
+  publicDir: "../public/",
+  base: "./",
   server: {
     host: true,
     open: !isCodeSandbox, // Open if it's not a CodeSandbox
