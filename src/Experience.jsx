@@ -31,7 +31,6 @@ export default function Experience() {
   }
 
   const room = useGLTF(fileName);
-  console.log(fileName);
 
   return (
     <>

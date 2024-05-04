@@ -20,9 +20,10 @@ export const setUserData = (newData) => {
   eventManager.publish("userDataChanged", userData);
 };
 
-// Update userData in (Step1: Create Your Room) section
+// Step1: Create Your Room section
 document.querySelectorAll('input[type="range"]').forEach((range) => {
   range.addEventListener("change", () => {
+    // Update userData
     if (range.classList.contains("width")) {
       const newData = {
         ...userData,
@@ -36,14 +37,18 @@ document.querySelectorAll('input[type="range"]').forEach((range) => {
       };
       setUserData(newData);
     }
+
+    // Update scale text
+    range.parentElement.querySelector(".scale").innerText = `${range.value}ft`;
   });
 });
 
-// Update userData in (Step2: Choose Furniture Option) section
+// Step2: Choose Furniture Option section
 const furniture2 = ["bed", "desk", "chair"];
 document.querySelectorAll('input[name="furniture_option"]').forEach((radio) => {
   radio.addEventListener("change", () => {
     if (radio.checked) {
+      // Update userData
       const newData = {
         ...userData,
         furnitureOption: radio.value,
@@ -65,9 +70,10 @@ document.querySelectorAll('input[name="furniture_option"]').forEach((radio) => {
   });
 });
 
-// Update userData in (Step3: Choose Preference) section
+// Step3: Choose Preference section
 document.querySelectorAll(".optimization_preference").forEach((preference) => {
   preference.addEventListener("click", () => {
+    // Update userData
     if (preference.classList.contains("daylight_preference")) {
       const newData = {
         ...userData,
@@ -90,22 +96,32 @@ document.querySelectorAll(".optimization_preference").forEach((preference) => {
   });
 });
 
-// Update userData in (Step4: Pick the Layout) section
-document
-  .querySelectorAll('input[name="optimization_rank"]')
-  .forEach((radio) => {
-    radio.addEventListener("change", () => {
-      if (radio.checked) {
-        const newData = {
-          ...userData,
-          optimizationRank: radio.value,
-        };
-        setUserData(newData);
-      }
-    });
-  });
+// Step4: Pick the Layout section
+const layoutRadio = document.querySelectorAll(
+  'input[name="optimization_rank"]'
+);
+layoutRadio.forEach((radio) => {
+  radio.addEventListener("change", () => {
+    // Update userData
+    if (radio.checked) {
+      const newData = {
+        ...userData,
+        optimizationRank: radio.value,
+      };
+      setUserData(newData);
 
-// Update userData in (Quiz) section
+      // highlight selected radio
+      layoutRadio.forEach((radio) => {
+        radio.parentElement
+          .querySelector(".rank-text")
+          .classList.remove("selected");
+      });
+      radio.parentElement.querySelector(".rank-text").classList.add("selected");
+    }
+  });
+});
+
+// Quiz section
 const answers = {
   "quiz-1": "daylight",
   "quiz-2": "privacy",
